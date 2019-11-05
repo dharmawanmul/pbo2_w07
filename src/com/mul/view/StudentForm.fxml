@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane prefHeight="404.0" prefWidth="719.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mul.controller.StudentFormController">
+   <center>
+      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <GridPane>
+               <children>
+                  <Label text="NRP" />
+                  <Label text="Nama Depan" GridPane.rowIndex="1" />
+                  <Label text="Nama Belakang" GridPane.rowIndex="2" />
+                  <Label text="Tanggal Lahir" GridPane.rowIndex="3" />
+                  <Label text="Tempat Lahir" GridPane.rowIndex="4" />
+                  <Label text="Alamat" GridPane.rowIndex="5" />
+                  <Label text="Email" GridPane.rowIndex="6" />
+                  <TextField fx:id="txtNRP" GridPane.columnIndex="1" />
+                  <TextField fx:id="txtNamaDepan" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <TextField fx:id="txtNamaBelakang" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <TextField fx:id="txtTempatLahir" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <TextField fx:id="txtAlamat" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                  <TextField fx:id="txtEmail" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                  <DatePicker fx:id="datepicker" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <Label text="Program Studi" GridPane.rowIndex="7" />
+                  <ComboBox fx:id="comboBox" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                  <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                     <children>
+                        <Button fx:id="btnSave" mnemonicParsing="false" onAction="#savedAct" text="Save" />
+                        <Button fx:id="btnReset" mnemonicParsing="false" onAction="#resetAct" text="Reset" />
+                        <Button fx:id="btnUpdate" mnemonicParsing="false" onAction="#updateAct" text="Update" />
+                        <Button fx:id="btnDelete" mnemonicParsing="false" onAction="#deleteAct" text="Delete" />
+                     </children>
+                  </HBox>
+               </children>
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="25.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+            </GridPane>
+            <TableView fx:id="tableDepartment" onMouseClicked="#tableClicked" prefHeight="200.0" prefWidth="200.0" tableMenuButtonVisible="true">
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
+               <columns>
+                  <TableColumn fx:id="col01" prefWidth="75.0" text="NRP" />
+                  <TableColumn fx:id="col02" prefWidth="75.0" text="Nama Depan" />
+                  <TableColumn fx:id="col03" prefWidth="75.0" text="Nama Belakang" />
+                  <TableColumn fx:id="col04" prefWidth="75.0" text="Tanggal Lahir" />
+                  <TableColumn fx:id="col05" prefWidth="75.0" text="Tempat Lahir" />
+                  <TableColumn fx:id="col06" prefWidth="75.0" text="Alamat" />
+                  <TableColumn fx:id="col07" prefWidth="75.0" text="Email" />
+                  <TableColumn fx:id="col08" prefWidth="75.0" text="Program Studi" />
+               </columns>
+            </TableView>
+         </children>
+      </VBox>
+   </center>
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Close" />
+                  <MenuItem mnemonicParsing="false" onAction="#showDepartmentFormController" text="Show Department Form" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Delete" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+</BorderPane>

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="kamuAjaTentuinSendiri" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="7a7e5389-a903-44be-bc3a-9ed4da89e586">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="prodi" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     program_studi.`id` AS program_studi_id,
+     program_studi.`nama` AS program_studi_nama,
+     mahasiswa.`id` AS mahasiswa_id,
+     mahasiswa.`nama_depan` AS mahasiswa_nama_depan,
+     mahasiswa.`nama_belakang` AS mahasiswa_nama_belakang,
+     mahasiswa.`tempat_lahir` AS mahasiswa_tempat_lahir,
+     mahasiswa.`tanggal_lahir` AS mahasiswa_tanggal_lahir,
+     mahasiswa.`alamat` AS mahasiswa_alamat,
+     mahasiswa.`email` AS mahasiswa_email,
+     mahasiswa.`program_studi_id` AS mahasiswa_program_studi_id
+FROM
+     `program_studi` program_studi INNER JOIN `mahasiswa` mahasiswa ON program_studi.`id` = mahasiswa.`program_studi_id`
+WHERE
+	program_studi_id = $P{prodi}]]>
+	</queryString>
+	<field name="program_studi_id" class="java.lang.Integer"/>
+	<field name="program_studi_nama" class="java.lang.String"/>
+	<field name="mahasiswa_id" class="java.lang.String"/>
+	<field name="mahasiswa_nama_depan" class="java.lang.String"/>
+	<field name="mahasiswa_nama_belakang" class="java.lang.String"/>
+	<field name="mahasiswa_tempat_lahir" class="java.lang.String"/>
+	<field name="mahasiswa_tanggal_lahir" class="java.sql.Date"/>
+	<field name="mahasiswa_alamat" class="java.lang.String"/>
+	<field name="mahasiswa_email" class="java.lang.String"/>
+	<field name="mahasiswa_program_studi_id" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="33" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="555" height="30" uuid="19afc04e-0688-4719-940b-10a5a0923658"/>
+				<textElement textAlignment="Center">
+					<font size="22" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DAFTAR PROGRAM STUDI	]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="25" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="2" width="100" height="20" uuid="cf6e5982-f846-43af-9b75-5707b3d3b2fc"/>
+				<text><![CDATA[NRP]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="2" width="162" height="20" uuid="04d21ef7-8cd3-4151-9ffe-f33569ea06dc"/>
+				<text><![CDATA[Nama Depan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="262" y="1" width="134" height="20" uuid="0d6043e8-15f1-4f71-b5a5-99fa1bbc28e5"/>
+				<text><![CDATA[Program Studi]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="36" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="1" width="100" height="20" uuid="f09beeca-0913-4ca7-aa20-bb3d9f95eaa4"/>
+				<textFieldExpression><![CDATA[$F{mahasiswa_id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="1" width="162" height="20" uuid="b827132a-d935-46d2-b51f-1e7faf98be6a"/>
+				<textFieldExpression><![CDATA[$F{mahasiswa_nama_depan}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="262" y="1" width="134" height="20" uuid="5b56e292-5c16-4494-aedf-66f263c4f4f1"/>
+				<textFieldExpression><![CDATA[$F{program_studi_nama}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="24" splitType="Stretch">
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="0" y="0" width="100" height="20" uuid="11b19b35-b2a6-494b-9696-6200850edd19"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="435" y="0" width="80" height="20" uuid="6071e8f0-1f88-4cc9-b5c4-69a6a175f370"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="515" y="0" width="40" height="20" uuid="f2ec9b8d-90d0-4235-89d7-f89a0a813e9c"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
